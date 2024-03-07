@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Home page{% endblock %}
+
+
+{%block content%}
+<h1>Home Page</h1>
+
+{% for i in range(5) %}
+    {% for j in range(i) %}
+        <span>*</span>
+    {% endfor %}
+    <br>
+{% endfor %}
+{%endblock%}
+
