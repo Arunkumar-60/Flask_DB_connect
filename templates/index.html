@@ -2,6 +2,13 @@
 
 {% block title %}Home page{% endblock %}
 
+{% with messages =  get_flashed_messages()%}
+    {%if messages %}
+        {%for msg in messages %}
+            <p>{{msg}}</p>
+        {%endfor%}
+    {%endif%}
+{%endwith%}
 
 {%block content%}
 <h1>Home Page</h1>

@@ -20,10 +20,12 @@ def login():
         session.permanent = True
         user = request.form["nm"]
         session["user"] = user
+        flash("Login sucessful!")
         return redirect(url_for("user"))
 
     else:
         if "user" in session:
+            flash("Already logged in")
             return redirect(url_for("user"))
             
         return render_template("login.html")
@@ -32,15 +34,18 @@ def login():
 def user():
     if "user" in session:
         user = session["user"]
-        return render_template("about.html" , usr = user)
+        return render_template("user.html" , usr = user)
     else:
+        flash("you are not logged in")
         return redirect(url_for("login"))
 
 @app.route("/logout")
 def logout():
+    if "user" in session:
+        user = session["user"]
+        flash("you have been logged out!", "info")
     session.pop("user", None)
     # types of flashes warning , info , error
-    flash("you have been loged out!", "info")
     return redirect(url_for("login"))
 
 
