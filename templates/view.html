@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+{%block title%}view all users{%endblock%}
+
+{%block content%}
+
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        {% for item in values %}
+        <!-- container allready set to be of call fluid container accprding to the bootstrap stylings so no need for further CSS -->
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+           
+        </tr>
+        {%endfor%}
+      
+      
+    </tbody>
+  </table>
+    
+{%endblock%}
